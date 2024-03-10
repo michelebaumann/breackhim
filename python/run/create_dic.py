@@ -25,12 +25,12 @@ def save_dictionary_to_file(dictionary, file_path):
         for item in dictionary:
             file.write(item + '\n')
 
-event = read_words_from_file(current_folder+'/python/lists/leet/event.txt')
-partner = read_words_from_file(current_folder+'/python/lists/leet/partner.txt')
-game = read_words_from_file(current_folder+'/python/lists/leet/game.txt')
-date = read_words_from_file(current_folder+'/python/lists/leet/date.txt')
+event = read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'leet', 'event.txt'))
+partner = read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'leet', 'partner.txt'))
+game = read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'leet', 'game.txt'))
+date = read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'leet', 'date.txt'))
 
 dictionary = create_dictionary(event, partner, game, date)
-os.makedirs(os.path.dirname(current_folder+'/python/lists/dictionary.txt'), exist_ok=True)
-save_dictionary_to_file(dictionary, current_folder+'/python/lists/dictionary.txt')
+os.makedirs(os.path.dirname(os.path.join(current_folder, 'python', 'lists', 'dictionary.txt')), exist_ok=True)
+save_dictionary_to_file(dictionary, os.path.join(current_folder, 'python', 'lists', 'dictionary.txt'))
 print("Dictionary creation completed")

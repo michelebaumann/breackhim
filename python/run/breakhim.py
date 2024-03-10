@@ -6,8 +6,14 @@ from tqdm import tqdm
 import concurrent.futures
 
 current_folder = os.getcwd()
-zip_file_paths = [current_folder+'/python/zips/breakme_giovanni_1.zip',current_folder+'/python/zips/breakme_giovanni_2.zip',current_folder+'/python/zips/breakme_giovanni_3.zip',current_folder+'/python/zips/breakme_giovanni_4.zip']
-dictionary = current_folder+'/python/lists/dictionary.txt'
+zip_file_paths = [
+    os.path.join(current_folder, 'python', 'zips', 'breakme_giovanni_1.zip'),
+    os.path.join(current_folder, 'python', 'zips', 'breakme_giovanni_2.zip'),
+    os.path.join(current_folder, 'python', 'zips', 'breakme_giovanni_3.zip'),
+    os.path.join(current_folder, 'python', 'zips', 'breakme_giovanni_4.zip')
+]
+dictionary = os.path.join(current_folder, 'python', 'lists', 'dictionary.txt')
+
 def bruteforce_zip_password(zip_file_path, password):
     with ZipFile(zip_file_path, 'r') as zip_file:
         try:

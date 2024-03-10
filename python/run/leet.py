@@ -45,7 +45,12 @@ def generate_combinations(word):
         combinations.add(''.join(leet_combination))
     return combinations
 
-word_files = [current_folder+'/python/lists/raw/date.txt', current_folder+'/python/lists/raw/event.txt', current_folder+'/python/lists/raw/game.txt', current_folder+'/python/lists/raw/partner.txt']
+word_files = [
+    os.path.join(current_folder, 'python', 'lists', 'raw', 'date.txt'),
+    os.path.join(current_folder, 'python', 'lists', 'raw', 'event.txt'),
+    os.path.join(current_folder, 'python', 'lists', 'raw', 'game.txt'),
+    os.path.join(current_folder, 'python', 'lists', 'raw', 'partner.txt'),
+]
 
 # Read words from each file
 for file in word_files:
