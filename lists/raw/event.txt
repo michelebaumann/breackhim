@@ -1,4 +1,1 @@
 excluding
-affiliation
-rebuttal
-attribute

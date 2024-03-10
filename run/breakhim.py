@@ -2,7 +2,7 @@ from itertools import product
 from string import ascii_lowercase
 from zipfile import ZipFile
 import os
-from tqdm import tqdm
+
 import concurrent.futures
 
 current_folder = os.getcwd()
@@ -20,17 +20,18 @@ def read_dictionary_file(file_path):
     with open(file_path, 'r') as file:
         return [line.strip() for line in file]
 
-def process_zip_file(zip_file_path, dictionary):
+def process_zip_file(args):
+    zip_file_path, dictionary = args
     if not os.path.exists(zip_file_path):
         print(f"File {os.path.basename(zip_file_path)} does not exist.")
         return
     print(f"Brute forcing {os.path.basename(zip_file_path)}...")
-    for password in tqdm(dictionary, desc=f"Brute-forcing {os.path.basename(zip_file_path)}", unit="attempt"):
+    for password in dictionary:
         if bruteforce_zip_password(zip_file_path, password) is not None:
             print(f"Found password for {os.path.basename(zip_file_path)}: {password}")
             break
 
 if __name__ == '__main__':
-    dictionary = read_dictionary_file(dictionary)
+    dictionary = read_dictionary_file(current_folder+'/lists/dictionary.txt')
     with concurrent.futures.ProcessPoolExecutor() as executor:
-        executor.map(process_zip_file, zip_file_paths, [dictionary]*len(zip_file_paths))
+        executor.map(process_zip_file, [(path, dictionary) for path in zip_file_paths])
