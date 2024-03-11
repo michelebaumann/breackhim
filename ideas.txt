@@ -6,6 +6,7 @@ date:
 event:
 
 enisa
+tiktok
 
 game:
 
@@ -31,4 +32,6 @@ emilia
 tino
 luna
 luca
+guliana
+barbara
 

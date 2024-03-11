@@ -1,8 +1,4 @@
-halo
-halo2
 halo3
-halo4
+
 dust
-Naruto
-diablo
-diablo3
+naruto
