@@ -33,7 +33,7 @@ def create_dictionary(event, partner, game, date):
 
 def save_dictionary_to_file(dictionary, file_path):
     with open(file_path, 'w') as file:
-        for item in dictionary:
+        for item in tqdm(dictionary, desc="Saving words"):
             file.write(item + '\n')
 
 event = list(set(read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'leet', 'event.txt'))))

@@ -1,15 +1,16 @@
 date:
-
 01042016
+02042016
+03042016
 04042016
 
 event:
-
 enisa
 tiktok
+aiact
+earthquake
 
 game:
-
 halo
 halo2
 halo3
@@ -25,7 +26,6 @@ Diablo
 Diablo3
 
 partner:
-
 aurore
 davide
 emilia
