@@ -37,7 +37,7 @@ def process_zip_file(zip_file_path, dictionary):
             break
 
 if __name__ == '__main__':
-    print("Starting brute force...")
+    print("Starting brute force attack...")
     dictionary = read_dictionary_file(dictionary)
     with concurrent.futures.ProcessPoolExecutor() as executor:
         executor.map(process_zip_file, zip_file_paths, [dictionary]*len(zip_file_paths))

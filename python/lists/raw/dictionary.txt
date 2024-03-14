@@ -1,0 +1,12 @@
+earthquake_halo
+earthquake_aurore
+halo_aurore
+aurore_earthquake
+halo_04042016
+04042016_earthquake
+aurore_halo
+aurore_04042016
+halo_earthquake
+04042016_halo
+04042016_aurore
+earthquake_04042016

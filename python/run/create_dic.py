@@ -7,7 +7,7 @@ print("Dictionary creation started")
 current_folder = os.getcwd()
 
 # Delete existing dictionary.txt if it exists
-dictionary_path = os.path.join(current_folder, 'python', 'lists', 'dictionary.txt')
+dictionary_path = os.path.join(current_folder, 'python', 'lists', 'raw', 'dictionary.txt')
 if os.path.exists(dictionary_path):
     os.remove(dictionary_path)
 
@@ -36,12 +36,12 @@ def save_dictionary_to_file(dictionary, file_path):
         for item in tqdm(dictionary, desc="Saving words"):
             file.write(item + '\n')
 
-event = list(set(read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'leet', 'event.txt'))))
-partner = list(set(read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'leet', 'partner.txt'))))
-game = list(set(read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'leet', 'game.txt'))))
-date = list(set(read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'leet', 'date.txt'))))
+event = list(set(read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'raw', 'event.txt'))))
+partner = list(set(read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'raw', 'partner.txt'))))
+game = list(set(read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'raw', 'game.txt'))))
+date = list(set(read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'raw', 'date.txt'))))
 
 dictionary = create_dictionary(event, partner, game, date)
-os.makedirs(os.path.dirname(os.path.join(current_folder, 'python', 'lists', 'dictionary.txt')), exist_ok=True)
-save_dictionary_to_file(dictionary, os.path.join(current_folder, 'python', 'lists', 'dictionary.txt'))
+os.makedirs(os.path.dirname(os.path.join(current_folder, 'python', 'lists', 'raw' 'dictionary.txt')), exist_ok=True)
+save_dictionary_to_file(dictionary, os.path.join(current_folder, 'python', 'lists', 'raw', 'dictionary.txt'))
 print("Dictionary creation completed")
