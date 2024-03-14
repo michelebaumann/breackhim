@@ -35,3 +35,6 @@ luca
 guliana
 barbara
 
+Found password for breakme_giovanni_3.zip: Auror3_04042016
+Found password for breakme_giovanni_2.zip: Halo_Auror3
+

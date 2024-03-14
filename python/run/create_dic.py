@@ -17,13 +17,17 @@ def read_words_from_file(file_path):
 
 def create_dictionary(event, partner, game, date):
     all_lists = [event, partner, game, date]
-    total_elements = len(event) * len(partner) * len(game) * len(date)
+    total_elements = sum(len(lst) * len(lst2) for lst in all_lists for lst2 in all_lists if lst is not lst2)
     progress_bar = tqdm(total=total_elements, desc="Creating dictionary", unit="pair")
     pairs_set = set()
-    for i in range(len(all_lists)):
-        for pair in product(all_lists[i], *(all_lists[:i] + all_lists[i+1:])):
-            pairs_set.add(f"{pair[0]}_{pair[1]}")
-            progress_bar.update()
+    for lst in all_lists:
+        for lst2 in all_lists:
+            if lst is lst2:
+                continue
+            for pair in product(lst, lst2):
+                if pair[0] != pair[1]:
+                    pairs_set.add('_'.join(pair))
+                    progress_bar.update()
     progress_bar.close()
     return pairs_set
 
