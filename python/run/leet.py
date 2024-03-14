@@ -36,7 +36,6 @@ leet_mapping = {
     'z': ['z', 'Z', '2', '7', '5'],
 }
 
-
 def generate_combinations(word):
     # Generate all combinations of leet mapping
     leet_letters = [leet_mapping.get(c, [c]) for c in word]
@@ -46,30 +45,30 @@ def generate_combinations(word):
     return combinations
 
 word_files = [
-    os.path.join(current_folder, 'python', 'lists', 'raw', 'date.txt'),
-    os.path.join(current_folder, 'python', 'lists', 'raw', 'event.txt'),
-    os.path.join(current_folder, 'python', 'lists', 'raw', 'game.txt'),
-    os.path.join(current_folder, 'python', 'lists', 'raw', 'partner.txt'),
+    os.path.join(current_folder, 'python', 'lists', 'raw', 'dictionary.txt')
 ]
 
 # Read words from each file
 for file in word_files:
     with open(file, 'r') as f:
         words = [line.strip() for line in f]
-
+    
+    print("generating combinations started")
     # Generate all combinations for each word
-    all_combinations = [generate_combinations(word) for word in words]
+    all_combinations = []
+    for word in tqdm(words, desc="Processing words", unit="word"):
+        all_combinations.append(generate_combinations(word))
+    print("generating combinations completed")
 
     # Create a new file in the specified directory
+    print("writing to file started")
     base = os.path.basename(file)
-    new_file = os.path.join(current_folder,'python', 'lists', 'leet', base)
+    new_file = os.path.join(current_folder,'python', 'lists', base)
     with open(new_file, 'w') as f:
         # Write all combinations to the new file
-        with tqdm(total=len(all_combinations), ncols=70) as pbar:
-            pbar.set_postfix(file=base, refresh=True)
-            for word_combinations in all_combinations:
-                for combination in word_combinations:
-                    f.write(combination + '\n')
-                pbar.update()
+        for word_combinations in all_combinations:
+            for combination in word_combinations:
+                f.write(combination + '\n')
+    print("writing to file completed")
 
 print("Leet creation completed.")
