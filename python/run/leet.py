@@ -46,10 +46,7 @@ def generate_combinations(word):
     return combinations
 
 word_files = [
-    os.path.join(current_folder, 'python', 'lists', 'raw', 'date.txt'),
     os.path.join(current_folder, 'python', 'lists', 'raw', 'event.txt'),
-    os.path.join(current_folder, 'python', 'lists', 'raw', 'game.txt'),
-    os.path.join(current_folder, 'python', 'lists', 'raw', 'partner.txt'),
 ]
 
 # Read words from each file

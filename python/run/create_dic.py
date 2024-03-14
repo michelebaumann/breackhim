@@ -15,8 +15,8 @@ def read_words_from_file(file_path):
     with open(file_path, 'r') as file:
         return [line.strip() for line in file]
 
-def create_dictionary(event, partner, game, date):
-    all_lists = [event, partner, game, date]
+def create_dictionary(event, partner):
+    all_lists = [event, partner]
     total_elements = sum(len(lst) * len(lst2) for lst in all_lists for lst2 in all_lists if lst is not lst2)
     progress_bar = tqdm(total=total_elements, desc="Creating dictionary", unit="pair")
     pairs_set = set()
@@ -37,11 +37,9 @@ def save_dictionary_to_file(dictionary, file_path):
             file.write(item + '\n')
 
 event = list(set(read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'leet', 'event.txt'))))
-partner = list(set(read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'leet', 'partner.txt'))))
-game = list(set(read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'leet', 'game.txt'))))
-date = list(set(read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'leet', 'date.txt'))))
+partner = list(set(read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'leet', 'WX.txt'))))
 
-dictionary = create_dictionary(event, partner, game, date)
+dictionary = create_dictionary(event, partner)
 os.makedirs(os.path.dirname(os.path.join(current_folder, 'python', 'lists', 'dictionary.txt')), exist_ok=True)
 save_dictionary_to_file(dictionary, os.path.join(current_folder, 'python', 'lists', 'dictionary.txt'))
 print("Dictionary creation completed")

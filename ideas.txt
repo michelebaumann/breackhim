@@ -4,7 +4,7 @@ date:
 04042016
 
 event:
-
+earthquake
 enisa
 tiktok
 
@@ -37,4 +37,6 @@ barbara
 
 Found password for breakme_giovanni_3.zip: Auror3_04042016
 Found password for breakme_giovanni_2.zip: Halo_Auror3
+Found password for breakme_giovanni_4.zip: 04042016_earThqu4ke
+Found password for breakme_giovanni_1.zip: earThqu4ke_Halo
 
