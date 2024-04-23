@@ -1,0 +1,53 @@
+# CHALLENGE #1
+
+[michelebaumann/breakhim](/)
+
+## "shared" combinations
+
+The password for each of these files is in the following form:
+
+- "breakme_giovanni_1.zip" --> "W_X" (without quotes)
+- "breakme_giovanni_2.zip" --> "X_Y" (without quotes)
+- "breakme_giovanni_3.zip" --> "Y_Z" (without quotes)
+- "breakme_giovanni_4.zip" --> "Z_W" (without quotes)
+
+Where "W/X/Y/Z" are "words", i.e., combinations of letters and numbers of arbitrary length. As you guessed, one "word" is always "shared" by two files. Furthermore, the "words" are always connected with an underscore character (i.e., "\_").
+
+## code
+
+```python
+def read_words_from_file(file_path):
+    with open(file_path, 'r') as file:
+        return [line.strip() for line in file]
+
+def create_dictionary(event, partner, game, date):
+    all_lists = [event, partner, game, date]
+    total_elements = sum(len(lst) * len(lst2) for lst in all_lists for lst2 in all_lists if lst is not lst2)
+    progress_bar = tqdm(total=total_elements, desc="Creating dictionary", unit="pair")
+    pairs_set = set()
+    for lst in all_lists:
+        for lst2 in all_lists:
+            if lst is lst2:
+                continue
+            for pair in product(lst, lst2):
+                if pair[0] != pair[1]:
+                    pairs_set.add('_'.join(pair))
+                    progress_bar.update()
+    progress_bar.close()
+    return pairs_set
+
+def save_dictionary_to_file(dictionary, file_path):
+    with open(file_path, 'w') as file:
+        for item in tqdm(dictionary, desc="Saving words"):
+            file.write(item + '\n')
+
+event = list(set(read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'raw', 'event.txt'))))
+partner = list(set(read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'raw', 'partner.txt'))))
+game = list(set(read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'raw', 'game.txt'))))
+date = list(set(read_words_from_file(os.path.join(current_folder, 'python', 'lists', 'raw', 'date.txt'))))
+
+dictionary = create_dictionary(event, partner, game, date)
+os.makedirs(os.path.dirname(os.path.join(current_folder, 'python', 'lists', 'raw' 'dictionary.txt')), exist_ok=True)
+save_dictionary_to_file(dictionary, os.path.join(current_folder, 'python', 'lists', 'raw', 'dictionary.txt'))
+print("Dictionary creation completed")
+```

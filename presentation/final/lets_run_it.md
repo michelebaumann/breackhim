@@ -1,6 +1,33 @@
-#!/bin/bash
+# CHALLENGE #1
 
-echo "Running breakhim.sh"
+[michelebaumann/breakhim](/)
+
+## let's run it
+
+1. `create_dic.py`
+
+```bash
+python3 python/run/create_dic.py
+```
+
+2. `leet.py`
+
+```bash
+python3 python/run/leet.py
+```
+
+3. `breakhim.py`
+
+```bash
+python3 python/run/breakhim.py
+```
+
+## or
+
+`breakhim.sh`
+
+```bash
+#!/bin/bash
 
 # Run create_dic.py
 start=$(date +%s)
@@ -22,3 +49,4 @@ python3 python/run/breakhim.py
 end=$(date +%s)
 duration=$(( end - start ))
 echo "breakhim.py execution time: $duration seconds"
+```

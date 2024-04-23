@@ -31,3 +31,7 @@ to run the brute force use
 chmod +x breakhim.sh
 ./breakhim.sh
 ```
+
+### step by step
+
+go to [presentation](/presentation)
