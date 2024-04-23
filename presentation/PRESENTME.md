@@ -1,6 +1,6 @@
 # DAS Challenge 1
 
-[michelebaumann/breakhim](https://github.com/michelebaumann/breakhim)
+[michelebaumann/breakhim](/)
 1
 
 michele.baumann@uni.li -> access
